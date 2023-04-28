@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
 #include "main.h"
 /**
  * _printf - custom implementation of printf function
@@ -41,7 +42,7 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					putchar('%');
-					putcahr(*format);
+					putchar(*format);
 					count += 2;
 					break;
 			}
