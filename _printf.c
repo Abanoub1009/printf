@@ -29,6 +29,11 @@ int _printf(const char *format, ...)
 				putchar('%');
 				printed_chars++;
 				break;
+			case 'd':
+			case 'i':
+				print_numbers(args);
+				printed_chars += 2;
+				break;
 			default:
 				break;
 			}
