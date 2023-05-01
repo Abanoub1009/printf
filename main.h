@@ -7,6 +7,6 @@
 #include <string.h>
 
 int _printf(const char *format, ...);
-
+int print_numbers(const char *format, ...);
 
 #endif
