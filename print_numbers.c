@@ -34,7 +34,7 @@ int print_numbers(const char *format, ...)
 		}
 		else
 		{
-			_putchar(*format);
+			putchar(*format);
 			printed_chars++;
 		}
 		format++;
