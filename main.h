@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+int _putchar(char c);
 int _printf(const char *format, ...);
-int print_numbers(const char *format, ...);
+int print_number(int n);
 
 #endif
