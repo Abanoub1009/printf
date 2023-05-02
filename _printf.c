@@ -2,7 +2,6 @@
 /**
  * _printf - prints output according to a format
  * @format: the format string
- *
  * Return: the number of characters printed (excluding the null byte)
  */
 int _printf(const char *format, ...)
@@ -10,40 +9,40 @@ int _printf(const char *format, ...)
 	va_list args;
 	int printed_chars = 0;
 
+	if (format == NULL)
+		return (0);
 	va_start(args, format);
-	while (*format)
+	for (; *format != '\0'; format++)
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
-			format++;
-			switch (*format)
-			{
+			_putchar(*format);
+			printed_chars++;
+			continue;
+		}
+		format++;
+		if (*format == '\0')
+			break;
+		switch (*format)
+		{
 			case 'c':
-				putchar(va_arg(args, int));
-				printed_chars++;
+				printed_chars += _putchar(va_arg(args, int));
 				break;
 			case 's':
-				printed_chars += printf("%s", va_arg(args, char *));
+				printed_chars += print_string(va_arg(args, char *));
 				break;
 			case '%':
-				putchar('%');
-				printed_chars++;
+				printed_chars += _putchar('%');
 				break;
 			case 'd':
 			case 'i':
-				print_numbers(args);
-				printed_chars += 2;
+				printed_chars += print_number(va_arg(args, int));
 				break;
 			default:
+				printf("% %s", format);
+				printed_chars += 2;
 				break;
-			}
 		}
-		else
-		{
-			putchar(*format);
-			printed_chars++;
-		}
-		format++;
 	}
 	va_end(args);
 	return (printed_chars);

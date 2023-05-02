@@ -1,44 +1,19 @@
 #include "main.h"
 /**
- * print_numbers - prints output according to a format
- * @format: the format string
+ * print_number - prints an integer
+ * @n: the integer to print
  *
- * Return: the number of characters printed (excluding the null byte)
+ * Return: the number of digits printed
  */
-int print_numbers(const char *format, ...)
+int print_number(int n)
 {
-	va_list args;
-	int printed_chars = 0;
+	int digits = 0;
 
-	if (format == NULL)
-		return (0);
-	va_start(args, format);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			switch (*format)
-			{
-				case 'd':
-					printf("%d", va_arg(args, int));
-					printed_chars++;
-					break;
-				case 'i':
-					printf("%d", va_arg(args, int));
-					printed_chars++;
-					break;
-				default:
-					break;
-			}
-		}
-		else
-		{
-			putchar(*format);
-			printed_chars++;
-		}
-		format++;
-	}
-	va_end(args);
-	return (printed_chars);
+	if (n / 10)
+		digits += print_number(n / 10);
+
+	_putchar((n % 10) + '0');
+	digits++;
+
+	return (digits);
 }
