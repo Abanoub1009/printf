@@ -5,9 +5,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
-
-int _putchar(char c);
 int _printf(const char *format, ...);
-int print_number(int n);
-int print_string(char *str);
+int num_digits(int num);
 #endif
